@@ -3252,11 +3252,17 @@ prometheus:
     ## port to 2379 and allow etcd scraping provided it is running on all Kubernetes master nodes
     ##
     additionalScrapeConfigs:
-     - job_name: 'Elastic & Mongo-Exporter'
+     - job_name: 'Elasticsearch Exporter'
        scrape_interval: 5m
        scrape_timeout: 1m
        static_configs:
-        - targets: ['18.236.158.154:9216','18.236.158.154:9114']
+        - targets: ['10.8.8.150:9114']
+
+     - job_name: 'MongoDB Exporter'
+       scrape_interval: 5m
+       scrape_timeout: 1m
+       static_configs:
+        - targets: ['10.8.10.212:9216', '10.8.11.50:9216', '10.8.8.155:9216']
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node
